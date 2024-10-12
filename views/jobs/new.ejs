@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Add A Job</title>
+</head>
+<body>
+    <a href="/">Homes</a>
+    <h1>Create a New Job!</h1>
+
+    <form action="/jobs" method="POST">
+        <div>
+            <label for="jobSector">Job Sector:</label>
+                <select name="jobSector" id="jobSector" required>
+                    <option value="" disabled selected>Select a job sector</option>
+                    <option value="technology">Technology</option>
+                    <option value="finance">Finance</option>
+                    <option value="healthcare">Healthcare</option>
+                    <option value="education">Education</option>
+                    <option value="manufacturing">Manufacturing</option>
+                    <option value="retail">Retail</option>
+                    <option value="hospitality">Hospitality</option>
+                    <option value="transportation">Transportation</option>
+                    <option value="construction">Construction</option>
+                    <option value="government">Government</option>
+                </select>
+            <label for="title">Job Title:</label>
+            <input type="text" name="title" id="title" required>
+        </div>
+        <div>
+            <label for="location">Job location:</label>
+            <input type="text" name="location" id="location" required>
+        </div>
+        <div>
+            <label for="submissionDeadline">Deadline to apply:</label>
+            <input type="date" name="submissionDeadline" id="submissionDeadline" required>
+        </div>
+        <div>
+            <label for="premium">Would you like to promote the role?</label>
+            <input type="checkbox" name="premium" id="premium">
+        </div>
+
+        <div>
+            Pay Range - 
+            <label for="payMin">Min:</label>
+            <input type="number" name="payMin" id="payMin">
+            ---
+            <label for="payMax">Max:</label>
+            <input type="number" name="payMax" id="payMax">
+        </div>
+        <div>
+            <label for="description">Description:</label>
+            <textarea name="description" id="description"></textarea>
+        </div>
+
+        <button type="submit">Add Job</button>
+    </form>
+</body>
+</html>

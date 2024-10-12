@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Add A Job</title>
+</head>
+<body>
+    <a href="/">Home</a>
+    <a href="/jobs/">Back to Jobs</a>
+    <a href="/jobs/<%=job._id%>">Return</a>
+    <h1>Edit - <%=job.title%></h1>
+
+    <form action="/jobs/<%=job._id%>?_method=PUT" method="POST">
+        <div>
+            <label for="jobSector">Job Sector:</label>
+            <select name="jobSector" id="jobSector" required>
+                <option value="" disabled <%= !job.jobSector ? 'selected' : '' %>>Select a job sector</option>
+                <option value="technology" <%= job.jobSector === 'technology' ? 'selected' : '' %>>Technology</option>
+                <option value="finance" <%= job.jobSector === 'finance' ? 'selected' : '' %>>Finance</option>
+                <option value="healthcare" <%= job.jobSector === 'healthcare' ? 'selected' : '' %>>Healthcare</option>
+                <option value="education" <%= job.jobSector === 'education' ? 'selected' : '' %>>Education</option>
+                <option value="manufacturing" <%= job.jobSector === 'manufacturing' ? 'selected' : '' %>>Manufacturing</option>
+                <option value="retail" <%= job.jobSector === 'retail' ? 'selected' : '' %>>Retail</option>
+                <option value="hospitality" <%= job.jobSector === 'hospitality' ? 'selected' : '' %>>Hospitality</option>
+                <option value="transportation" <%= job.jobSector === 'transportation' ? 'selected' : '' %>>Transportation</option>
+                <option value="construction" <%= job.jobSector === 'construction' ? 'selected' : '' %>>Construction</option>
+                <option value="government" <%= job.jobSector === 'government' ? 'selected' : '' %>>Government</option>
+            </select>
+            <label for="title">Job Title:</label>
+            <input type="text" name="title" id="title" required value="<%=job.title%>">
+        </div>
+        <div>
+            <label for="location">Job location:</label>
+            <input type="text" name="location" id="location" required value="<%=job.location%>"">
+        </div>
+        <div>
+            <label for="submissionDeadline">Deadline to apply:</label>
+            <input type="date" name="submissionDeadline" id="submissionDeadline" required value="<%= job.submissionDeadline ? job.submissionDeadline.toISOString().split('T')[0] : '' %>">
+        </div>
+        <div>
+            <label for="premium">Would you like to promote the role?</label>
+            <input type="checkbox" name="premium" id="premium" <%= job.premium ? 'checked' : '' %> >
+        </div>
+
+        <div>
+            Pay Range - 
+            <label for="payMin">Min:</label>
+            <input type="number" name="payMin" id="payMin" value="<%=job.payMin%>">
+            ---
+            <label for="payMax">Max:</label>
+            <input type="number" name="payMax" id="payMax" value="<%=job.payMax%>">
+        </div>
+        <div>
+            <label for="description">Description:</label>
+            <textarea name="description" id="description"><%=job.description%></textarea>
+        </div>
+
+        <button type="submit">Edit Job</button>
+    </form>
+
+</body>
+</html>

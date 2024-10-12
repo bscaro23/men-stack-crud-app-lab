@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Application - <%= job.title %></title>
+</head>
+<form action="/jobs/<%= job._id %>" method="POST">
+    <body>
+        <h1>Apply to be a <%= job.title %></h1>
+        <div>
+            <label for="firstName">First Name:</label>
+            <input type="text" name="firstName" id="firstName">
+            <label for="lastName">Last Name:</label>
+            <input type="text" name="lastName" id="lastName"> 
+        </div>
+        <label for="username">Username</label>
+        <input type="string" name="username" id="username">
+        <label for="password">Password</label>
+        <input type="password" name="password" id="password"
+            minlength="8" 
+            required 
+            pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" 
+            title="Password must be at least 8 characters long, contain at least one uppercase letter, one lowercase letter, and one number.">
+        <br>
+        <label for="payExpectations">Pay Expectation:</label>
+        <input type="number" name="payExpectations" id="payExpectations">
+        <br>
+        <label for="cv">CV:</label>
+        <textarea name="cv" id="cv"></textarea>
+        <br>
+        <label for="coverLetter">Coverletter:</label>
+        <textarea name="coverLetter" id="coverLetter"></textarea>
+    </body>
+    <br>
+    <button type="submit">Apply</button>
+</form>
+<form>
+    <button>Already have an account</button>
+</form>
+</html>

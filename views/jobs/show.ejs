@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title><%= job.title %> - OJ B</title>
+</head>
+<body>
+    <a href="/jobs/">Back to Jobs</a>
+    <a href="/">Home</a>
+    <div>
+        <h1><%= job.title %>
+            <%if (job.premium) {%>
+                🌟
+            <%} %></h1>
+        <h3><%=job.jobSector%></h3>
+        <h2><%=job.location%></h2>
+    </div>
+    <h2>Pay: $<%=job.payMin%> - $<%=job.payMax%></h2>
+    <p><%=job.description%></p>
+    <h4>Number of applicants: <%=job.applicants.length%></h4>
+    
+
+    <form action="/jobs/<%=job._id%>?_method=DELETE" method="POST">
+        <button type="submit">Delete <%= job.title %></button>
+    </form>
+    <form action="/jobs/<%= job._id %>/edit" method="GET">
+        <button type="submit">Edit <%= job.title%></button>
+    </form>
+    <form action="/jobs/<%= job._id %>/apply" method="GET">
+        <button type="submit">Apply to be a <%= job.title%></button>
+    </form>
+</body>
+</html>
